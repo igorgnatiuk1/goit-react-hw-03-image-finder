@@ -27,7 +27,7 @@ class App extends Component {
         if (prevState.searchQuery !== this.state.searchQuery) {
             this.fetchApi();
         }
-        if (snapshot) {
+        if (snapshot && this.state.currentPage > 2) {
             window.scrollTo({
                 top: document.documentElement.scrollHeight,
                 behavior: 'smooth',
@@ -41,6 +41,7 @@ class App extends Component {
     }
 
     handleChangeQuery = query => {
+
         this.setState({
             searchQuery: query,
             images: [],
@@ -51,6 +52,8 @@ class App extends Component {
             showModal: false,
         });
     };
+
+
 
     handleClickButton = () => {
         this.fetchApi();
